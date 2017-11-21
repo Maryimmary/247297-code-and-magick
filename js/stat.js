@@ -26,16 +26,16 @@ window.renderStatistics = function (ctx, names, times) {
       max = time;
     }
   }
+
   var step = histogramWidth / max;
   for (var j = 0; j < times.length; j++) {
     if (names[j] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-      ctx.fillRect(initialX + indent * j, histogramHeight - times[j] * step, barWidth, times[j] * step);
     } else {
       var opacity = (Math.random() + 0.1).toFixed(1);
       ctx.fillStyle = 'rgba(0, 0, 255,' + opacity + ')';
-      ctx.fillRect(initialX + indent * j, histogramHeight - times[j] * step, barWidth, times[j] * step);
     }
+    ctx.fillRect(initialX + indent * j, histogramHeight - times[j] * step, barWidth, times[j] * step);
     ctx.fillStyle = 'black';
     ctx.fillText(names[j], initialX + indent * j, histogramHeight + lineHeight);
     ctx.fillText(times[j].toFixed(0), initialX + indent * j, histogramHeight - times[j] * step - lineHeight / 2);
