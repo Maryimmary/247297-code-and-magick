@@ -14,7 +14,7 @@ window.renderStatistics = function (ctx, names, times) {
   var histogramWidth = 150;
   var histogramHeight = 240;
   var barWidth = 40;
-  var indent = 100;
+  var indent = 90;
   var lineHeight = 20;
   var initialX = 125;
 
