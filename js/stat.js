@@ -16,7 +16,7 @@ window.renderStatistics = function (ctx, names, times) {
   var barWidth = 40;
   var indent = 90;
   var lineHeight = 20;
-  var initialX = 125;
+  var initialX = 130;
 
   var max = -1;
   for (var i = 0; i < times.length; i++) {
