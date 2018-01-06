@@ -1,6 +1,5 @@
 'use strict';
-var ESC_KEYCODE = 27;
-var ENTER_KEYCODE = 13;
+
 var setup = document.querySelector('.setup');
 var setupSimilar = setup.querySelector('.setup-similar');
 setupSimilar.classList.remove('hidden');
@@ -52,9 +51,7 @@ setupOpen.addEventListener('click', function(evt) {
 });
 
 setupOpen.addEventListener('keydown', function(evt) {
-  if(evt.keyCode === ENTER_KEYCODE) {
-    openPopup();
-  }
+  window.util.isEnterEvent(evt, openPopup);
 });
 
 setupClose.addEventListener('click', function (evt) {
@@ -62,14 +59,12 @@ setupClose.addEventListener('click', function (evt) {
 });
 
 setupClose.addEventListener('keydown', function (evt) {
-  if(evt.keyCode === ENTER_KEYCODE) {
-    closePopup();
-  }
+  window.util.isEnterEvent(evt, closePopup);
 });
 
 function onPopupEscPress (evt) {
-  if (evt.keyCode === ESC_KEYCODE && document.activeElement !== userName) {
-    closePopup();
+  if (document.activeElement !== userName) {
+    window.util.isEscEvent(evt, closePopup);
   }
 }
 
