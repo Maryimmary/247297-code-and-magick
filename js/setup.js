@@ -9,6 +9,7 @@ var firstNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кр
 var surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var colorCoat = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var colorEyes = ['black', 'red', 'blue', 'yellow', 'green'];
+var fireballColor = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -82,5 +83,20 @@ function closePopup() {
   document.removeEventListener('keydown', onPopupEscPress);
 }
 
+// Изменение характеристик персонажа по нажатию
+var playerPerson = document.querySelector('.setup-player');
+var playerCoat = playerPerson.querySelector('.wizard-coat');
+var playerEyes = playerPerson.querySelector('.wizard-eyes');
+var playerFireball = playerPerson.querySelector('.setup-fireball-wrap');
 
+playerCoat.addEventListener('click', function () {
+  playerCoat.style.fill = getRandomItem(colorCoat);
+});
 
+playerEyes.addEventListener('click', function () {
+  playerEyes.style.fill = getRandomItem(colorEyes);
+});
+
+playerFireball.addEventListener('click', function (evt) {
+  playerFireball.style.backgroundColor = getRandomItem(fireballColor);
+});
