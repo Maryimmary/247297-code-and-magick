@@ -1,7 +1,7 @@
 'use strict';
-
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 var setup = document.querySelector('.setup');
-setup.classList.remove('hidden');
 var setupSimilar = setup.querySelector('.setup-similar');
 setupSimilar.classList.remove('hidden');
 var data = [];
@@ -40,3 +40,47 @@ for (var i = 0; i < data.length; i++) {
   fragment.appendChild(createElement());
 }
 similarList.appendChild(fragment);
+
+//Открытие/закрытие окна настройки персонажа
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = document.querySelector('.setup-close');
+var userName = document.querySelector('.setup-user-name');
+
+setupOpen.addEventListener('click', function(evt) {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function(evt) {
+  if(evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function (evt) {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if(evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+function onPopupEscPress (evt) {
+  if (evt.keyCode === ESC_KEYCODE && document.activeElement !== userName) {
+    closePopup();
+  }
+}
+
+function openPopup(){
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+}
+
+function closePopup() {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+}
+
+
+
