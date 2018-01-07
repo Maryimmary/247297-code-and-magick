@@ -9,4 +9,4 @@
   window.randomizeParameter.colorizeClick(playerCoat);
   window.randomizeParameter.colorizeClick(playerEyes);
   window.randomizeParameter.colorizeClick(playerFireball);
-}) ();
+})();

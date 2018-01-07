@@ -1,23 +1,22 @@
 'use strict';
-
-//Открытие/закрытие окна настройки персонажа
+//  Открытие/закрытие окна настройки персонажа
 (function () {
   var setup = document.querySelector('.setup');
-  var setupSimilar =  document.querySelector('.setup-similar');
+  var setupSimilar = document.querySelector('.setup-similar');
   setupSimilar.classList.remove('hidden');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = document.querySelector('.setup-close');
   var userName = document.querySelector('.setup-user-name');
 
-  setupOpen.addEventListener('click', function(evt) {
+  setupOpen.addEventListener('click', function () {
     openPopup();
   });
 
-  setupOpen.addEventListener('keydown', function(evt) {
+  setupOpen.addEventListener('keydown', function (evt) {
     window.util.isEnterEvent(evt, openPopup);
   });
 
-  setupClose.addEventListener('click', function (evt) {
+  setupClose.addEventListener('click', function () {
     closePopup();
   });
 
@@ -25,13 +24,13 @@
     window.util.isEnterEvent(evt, closePopup);
   });
 
-  function onPopupEscPress (evt) {
+  function onPopupEscPress(evt) {
     if (document.activeElement !== userName) {
       window.util.isEscEvent(evt, closePopup);
     }
   }
 
-  function openPopup(){
+  function openPopup() {
     setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
   }
@@ -40,7 +39,4 @@
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
   }
-}) ();
-
-
-
+})();

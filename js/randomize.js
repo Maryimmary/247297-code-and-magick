@@ -6,7 +6,6 @@
   function getRandomItem(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
-
   window.randomizeParameter = {
     colorizeClick: function (element) {
       element.addEventListener('click', function () {
@@ -16,13 +15,13 @@
         } else {
           element.style.fill = color;
         }
-      })
+      });
     },
     getRandomParameter: function (array) {
       return getRandomItem(array);
     },
-    getRandomColor: function() {
+    getRandomColor: function () {
       return getRandomItem(colors);
     }
   };
-}) ();
+})();
