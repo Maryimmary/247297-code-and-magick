@@ -6,9 +6,17 @@
   var playerEyes = playerPerson.querySelector('.wizard-eyes');
   var playerFireball = playerPerson.querySelector('.setup-fireball-wrap');
 
-  window.randomizeParameter.colorizeClick(playerCoat);
-  window.randomizeParameter.colorizeClick(playerEyes);
-  window.randomizeParameter.colorizeClick(playerFireball);
+  function setFill(element, color) {
+    element.style.fill = color;
+  }
+
+  function setBackgroundColor(element, color) {
+    element.style.backgroundColor = color;
+  }
+
+  window.colorizeElement(playerCoat, ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'], setFill);
+  window.colorizeElement(playerEyes, ['black', 'red', 'blue', 'yellow', 'green'], setFill);
+  window.colorizeElement(playerFireball, ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'], setBackgroundColor);
 
   // Перетаскивание инвентаря
   var shopElement = document.querySelector('.setup-artifacts-shop');
