@@ -1,42 +1,46 @@
 'use strict';
-//  Открытие/закрытие окна настройки персонажа
+// Изменение характеристик персонажа по нажатию
 (function () {
-  var setup = document.querySelector('.setup');
-  var setupSimilar = document.querySelector('.setup-similar');
-  setupSimilar.classList.remove('hidden');
-  var setupOpen = document.querySelector('.setup-open');
-  var setupClose = document.querySelector('.setup-close');
-  var userName = document.querySelector('.setup-user-name');
+  var playerPerson = document.querySelector('.setup-player');
+  var playerCoat = playerPerson.querySelector('.wizard-coat');
+  var playerEyes = playerPerson.querySelector('.wizard-eyes');
+  var playerFireball = playerPerson.querySelector('.setup-fireball-wrap');
 
-  setupOpen.addEventListener('click', function () {
-    openPopup();
-  });
+  window.randomizeParameter.colorizeClick(playerCoat);
+  window.randomizeParameter.colorizeClick(playerEyes);
+  window.randomizeParameter.colorizeClick(playerFireball);
 
-  setupOpen.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, openPopup);
-  });
+  // Перетаскивание инвентаря
+  var shopElement = document.querySelector('.setup-artifacts-shop');
+  var draggedItem = null;
 
-  setupClose.addEventListener('click', function () {
-    closePopup();
-  });
-
-  setupClose.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, closePopup);
-  });
-
-  function onPopupEscPress(evt) {
-    if (document.activeElement !== userName) {
-      window.util.isEscEvent(evt, closePopup);
+  shopElement.addEventListener('dragstart', function (evt) {
+    if (evt.target.tagName.toLowerCase() === 'img') {
+      draggedItem = evt.target;
+      evt.dataTransfer.setData('text/plain', evt.target.alt);
     }
-  }
+  });
 
-  function openPopup() {
-    setup.classList.remove('hidden');
-    document.addEventListener('keydown', onPopupEscPress);
-  }
+  var artifactsElement = document.querySelector('.setup-artifacts');
 
-  function closePopup() {
-    setup.classList.add('hidden');
-    document.removeEventListener('keydown', onPopupEscPress);
-  }
+  artifactsElement.addEventListener('dragover', function (evt) {
+    evt.preventDefault();
+    return false;
+  });
+
+  artifactsElement.addEventListener('drop', function (evt) {
+    evt.target.style.backgroundColor = '';
+    evt.target.appendChild(draggedItem);
+    evt.preventDefault();
+  });
+
+  artifactsElement.addEventListener('dragenter', function (evt) {
+    evt.target.style.backgroundColor = 'yellow';
+    evt.preventDefault();
+  });
+
+  artifactsElement.addEventListener('dragleave', function (evt) {
+    evt.target.style.backgroundColor = '';
+    evt.preventDefault();
+  });
 })();
