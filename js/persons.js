@@ -26,7 +26,7 @@
     return template;
   }
 
-  window.load(function (data) {
+  function successHandler(data) {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < 4; i++) {
       fragment.appendChild(createElement(data[i]));
@@ -34,5 +34,13 @@
     similarList.appendChild(fragment);
 
     document.querySelector('.setup').querySelector('.setup-similar').classList.remove('hidden');
-  });
+  }
+
+  function errorHandler(errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'position: absolute; z-index: 100; top: 10px; left: 10px; text-align: center; background-color: lightgreen; color: white; font-size: 30px; font-weight: bold;';
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+  }
+  window.load(successHandler, errorHandler);
 })();
