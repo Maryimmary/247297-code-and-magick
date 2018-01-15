@@ -1,11 +1,11 @@
 'use strict';
 (function () {
-  window.load = function(onLoad, onError) {
+  window.load = function (onLoad, onError) {
     var URL = 'https://1510.dump.academy/code-and-magick/data';
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
-    xhr.addEventListener('load', function() {
+    xhr.addEventListener('load', function () {
       switch (xhr.status) {
         case 200:
           onLoad(xhr.response);
@@ -30,9 +30,9 @@
     xhr.send();
   };
 
-/*************************ЗАГРУЗКА*******************************/
+  /* ЗАГРУЗКА */
 
-  window.save = function(data, onLoad, onError) {
+  window.save = function (data, onLoad, onError) {
     var URL = 'https://js.dump.academy/code-and-magick';
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';

@@ -26,7 +26,7 @@
     return template;
   }
 
-  function successHandler(data) {
+  function successHandler() {
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < 4; i++) {
       fragment.appendChild(createElement(data[i]));

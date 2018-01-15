@@ -78,10 +78,10 @@
     document.addEventListener('mouseup', onMouseUp);
   });
 
-  /*Сценарий отправки формы*/
+  /* Сценарий отправки формы */
   var form = document.querySelector('.setup-wizard-form');
   form.addEventListener('submit', function (evt) {
-    window.save(new FormData(form), function(response) {
+    window.save(new FormData(form), function () {
       setup.classList.add('hidden');
     });
     evt.preventDefault();
