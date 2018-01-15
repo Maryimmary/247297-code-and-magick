@@ -26,9 +26,13 @@
     return template;
   }
 
-  var fragment = document.createDocumentFragment();
-  for (var i = 0; i < data.length; i++) {
-    fragment.appendChild(createElement());
-  }
-  similarList.appendChild(fragment);
+  window.load(function (data) {
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < data.length; i++) {
+      fragment.appendChild(createElement());
+    }
+    similarList.appendChild(fragment);
+
+    document.querySelector('.setup').querySelector('.setup-similar').classList.remove('hidden');
+  });
 })();
